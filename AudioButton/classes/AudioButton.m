@@ -46,6 +46,22 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)configAudioSession{
+    //config AVAudioSession.
+    NSError *error = nil;
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: &error];
+    if (error){
+        NSLog(@"Error: AVAudioSession set category: %@", error.description);
+        return;
+    }
+    
+    [[AVAudioSession sharedInstance] setActive:YES error:&error];
+    if (error){
+        NSLog(@"Error: AVAudioSession setActive: %@", error.description);
+        return;
+    }
+}
+
 -(void)setupWithFrame:(CGRect)frame isRound:(BOOL)isRound backgroundColor:(UIColor *)aBackgroundColor audioPath:(NSURL *)anAudioUrl{
     self.frame = frame;
     self.backgroundColor = aBackgroundColor;
@@ -63,7 +79,7 @@
     
     const CGFloat diameter = fmin(frame.size.height, frame.size.width) * 0.618;
     eclipseRect = CGRectMake((frame.size.width - diameter) / 2, (frame.size.height - diameter) / 2, diameter, diameter);
-
+    
     const CGFloat side = diameter * 0.618;
     const CGFloat leftX = eclipseRect.origin.x + (diameter - 0.866 * side) * 0.667;
     const CGFloat topY = eclipseRect.origin.y + (diameter - side) / 2;
@@ -73,8 +89,13 @@
     topPoint = CGPointMake(leftX, topY);
     rightPoint = CGPointMake(rightX, middleY);
     bottomPoint = CGPointMake(leftX, bottomY);
-
+    
     stopRect = CGRectMake(eclipseRect.origin.x + diameter / 4, eclipseRect.origin.y + diameter / 4, diameter / 2, diameter / 2);
+    
+    [self configAudioSession];
+    //configure notification when audio route change, media service were reset.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionRouteChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configAudioSession) name:AVAudioSessionMediaServicesWereResetNotification object:nil];
 }
 
 -(void)drawRect:(CGRect)rect{
@@ -131,15 +152,6 @@
         player.volume = 1.0f;
         player.delegate = self;
         [player prepareToPlay];
-        
-        NSError *setCategoryError = nil;
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
-        if (setCategoryError){
-            NSLog(@"Error: AVAudioSession set category! %d", setCategoryError.code);
-        }
-        
-        // we don't do anything special in the route change notification
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionRouteChangeNotification object:nil];
     }
 }
 
@@ -147,7 +159,7 @@
     if (player == nil) {
         return;
     }
-
+    
     switch (playState) {
         case AudioButtonStateIdle:{
             //播放声音
@@ -185,12 +197,12 @@
 - (void)handleRouteChange:(NSNotification *)notification
 {
     /*MyNSLogToTest(@"模拟器不能模拟测试：
-    1：调用中断
-    2：更改静音开关的设置
-    3：模拟屏幕锁定，返回首页
-    4：模拟插上或拔下耳机
-    5：Query audio route information or test audio session category behavior
-    6. 来电、接听、挂断。");
+     1：调用中断
+     2：更改静音开关的设置
+     3：模拟屏幕锁定，返回首页
+     4：模拟插上或拔下耳机
+     5：Query audio route information or test audio session category behavior
+     6. 来电、接听、挂断。");
      */
     UInt8 reasonValue = [[notification.userInfo valueForKey:AVAudioSessionRouteChangeReasonKey] intValue];
     AVAudioSessionRouteDescription *routeDescription = [notification.userInfo valueForKey:AVAudioSessionRouteChangePreviousRouteKey];
