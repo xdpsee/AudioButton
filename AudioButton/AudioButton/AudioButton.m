@@ -8,8 +8,9 @@
 
 #import "AudioButton.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AudioSessionConfig.h"
 
-@interface AudioButton()<AVAudioPlayerDelegate>
+@interface AudioButton()<AVAudioPlayerDelegate, AudioSessionConfigDelegate>
 @property(strong, nonatomic) AVAudioPlayer *player;
 @property(strong, nonatomic) ProgressLayers *progressLayers;
 @property(assign, nonatomic) AudioButtonState playState;
@@ -46,22 +47,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)configAudioSession{
-    //config AVAudioSession.
-    NSError *error = nil;
-    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: &error];
-    if (error){
-        NSLog(@"Error: AVAudioSession set category: %@", error.description);
-        return;
-    }
-    
-    [[AVAudioSession sharedInstance] setActive:YES error:&error];
-    if (error){
-        NSLog(@"Error: AVAudioSession setActive: %@", error.description);
-        return;
-    }
-}
-
 -(void)setupWithFrame:(CGRect)frame isRound:(BOOL)isRound backgroundColor:(UIColor *)aBackgroundColor audioPath:(NSURL *)anAudioUrl{
     self.frame = frame;
     self.backgroundColor = aBackgroundColor;
@@ -92,10 +77,8 @@
     
     stopRect = CGRectMake(eclipseRect.origin.x + diameter / 4, eclipseRect.origin.y + diameter / 4, diameter / 2, diameter / 2);
     
-    [self configAudioSession];
-    //configure notification when audio route change, media service were reset.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRouteChange:) name:AVAudioSessionRouteChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configAudioSession) name:AVAudioSessionMediaServicesWereResetNotification object:nil];
+    //configure audio session, register notification for handleRouteChange.
+    [[AudioSessionConfig instance] registerAudioSessionNotificationFor:self];
 }
 
 -(void)drawRect:(CGRect)rect{
@@ -193,7 +176,7 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark AVAudioSession notification handlers
+#pragma mark - AudioSessionConfigDelegate, AVAudioSession notification handlers
 - (void)handleRouteChange:(NSNotification *)notification
 {
     /*MyNSLogToTest(@"模拟器不能模拟测试：

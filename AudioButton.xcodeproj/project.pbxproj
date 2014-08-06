@@ -21,10 +21,11 @@
 		50B726AF198F322D002F201B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B72691198F322D002F201B /* UIKit.framework */; };
 		50B726B7198F322D002F201B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50B726B5198F322D002F201B /* InfoPlist.strings */; };
 		50B726B9198F322D002F201B /* AudioButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B726B8198F322D002F201B /* AudioButtonTests.m */; };
-		50B726C9198F3250002F201B /* AudioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B726C4198F3250002F201B /* AudioButton.m */; };
-		50B726CA198F3250002F201B /* CustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B726C6198F3250002F201B /* CustomProgressView.m */; };
-		50B726CB198F3250002F201B /* ProgressLayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B726C8198F3250002F201B /* ProgressLayers.m */; };
 		50B726CD198F359C002F201B /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 50B726CC198F359C002F201B /* sample.m4a */; };
+		50C83614199206D900C7AE54 /* AudioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C8360C199206D900C7AE54 /* AudioButton.m */; };
+		50C83615199206D900C7AE54 /* CustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C8360E199206D900C7AE54 /* CustomProgressView.m */; };
+		50C83616199206D900C7AE54 /* ProgressLayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C83610199206D900C7AE54 /* ProgressLayers.m */; };
+		50C83617199206D900C7AE54 /* AudioSessionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C83613199206D900C7AE54 /* AudioSessionConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,13 +58,15 @@
 		50B726B4198F322D002F201B /* AudioButtonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioButtonTests-Info.plist"; sourceTree = "<group>"; };
 		50B726B6198F322D002F201B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50B726B8198F322D002F201B /* AudioButtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioButtonTests.m; sourceTree = "<group>"; };
-		50B726C3198F3250002F201B /* AudioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioButton.h; sourceTree = "<group>"; };
-		50B726C4198F3250002F201B /* AudioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioButton.m; sourceTree = "<group>"; };
-		50B726C5198F3250002F201B /* CustomProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProgressView.h; sourceTree = "<group>"; };
-		50B726C6198F3250002F201B /* CustomProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProgressView.m; sourceTree = "<group>"; };
-		50B726C7198F3250002F201B /* ProgressLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressLayers.h; sourceTree = "<group>"; };
-		50B726C8198F3250002F201B /* ProgressLayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressLayers.m; sourceTree = "<group>"; };
 		50B726CC198F359C002F201B /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
+		50C8360B199206D900C7AE54 /* AudioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioButton.h; sourceTree = "<group>"; };
+		50C8360C199206D900C7AE54 /* AudioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioButton.m; sourceTree = "<group>"; };
+		50C8360D199206D900C7AE54 /* CustomProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProgressView.h; sourceTree = "<group>"; };
+		50C8360E199206D900C7AE54 /* CustomProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProgressView.m; sourceTree = "<group>"; };
+		50C8360F199206D900C7AE54 /* ProgressLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressLayers.h; sourceTree = "<group>"; };
+		50C83610199206D900C7AE54 /* ProgressLayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressLayers.m; sourceTree = "<group>"; };
+		50C83612199206D900C7AE54 /* AudioSessionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSessionConfig.h; sourceTree = "<group>"; };
+		50C83613199206D900C7AE54 /* AudioSessionConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSessionConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +126,9 @@
 		50B72693198F322D002F201B /* AudioButton */ = {
 			isa = PBXGroup;
 			children = (
+				50C8360A199206D900C7AE54 /* AudioButton */,
+				50C83611199206D900C7AE54 /* AudioSessionConfig */,
 				50B726CC198F359C002F201B /* sample.m4a */,
-				50B726C2198F3250002F201B /* classes */,
 				50B7269C198F322D002F201B /* AppDelegate.h */,
 				50B7269D198F322D002F201B /* AppDelegate.m */,
 				50B7269F198F322D002F201B /* Main.storyboard */,
@@ -165,17 +169,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		50B726C2198F3250002F201B /* classes */ = {
+		50C8360A199206D900C7AE54 /* AudioButton */ = {
 			isa = PBXGroup;
 			children = (
-				50B726C3198F3250002F201B /* AudioButton.h */,
-				50B726C4198F3250002F201B /* AudioButton.m */,
-				50B726C5198F3250002F201B /* CustomProgressView.h */,
-				50B726C6198F3250002F201B /* CustomProgressView.m */,
-				50B726C7198F3250002F201B /* ProgressLayers.h */,
-				50B726C8198F3250002F201B /* ProgressLayers.m */,
+				50C8360B199206D900C7AE54 /* AudioButton.h */,
+				50C8360C199206D900C7AE54 /* AudioButton.m */,
+				50C8360D199206D900C7AE54 /* CustomProgressView.h */,
+				50C8360E199206D900C7AE54 /* CustomProgressView.m */,
+				50C8360F199206D900C7AE54 /* ProgressLayers.h */,
+				50C83610199206D900C7AE54 /* ProgressLayers.m */,
 			);
-			path = classes;
+			path = AudioButton;
+			sourceTree = "<group>";
+		};
+		50C83611199206D900C7AE54 /* AudioSessionConfig */ = {
+			isa = PBXGroup;
+			children = (
+				50C83612199206D900C7AE54 /* AudioSessionConfig.h */,
+				50C83613199206D900C7AE54 /* AudioSessionConfig.m */,
+			);
+			path = AudioSessionConfig;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,11 +289,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B726CA198F3250002F201B /* CustomProgressView.m in Sources */,
+				50C83617199206D900C7AE54 /* AudioSessionConfig.m in Sources */,
+				50C83615199206D900C7AE54 /* CustomProgressView.m in Sources */,
 				50B726A4198F322D002F201B /* ViewController.m in Sources */,
 				50B7269E198F322D002F201B /* AppDelegate.m in Sources */,
-				50B726C9198F3250002F201B /* AudioButton.m in Sources */,
-				50B726CB198F3250002F201B /* ProgressLayers.m in Sources */,
+				50C83614199206D900C7AE54 /* AudioButton.m in Sources */,
+				50C83616199206D900C7AE54 /* ProgressLayers.m in Sources */,
 				50B7269A198F322D002F201B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
